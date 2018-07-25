@@ -1,13 +1,14 @@
 // pages/movies/more-movies/more-movies.js
-
+var util =  require('../../../utils/util.js/');
 var app = getApp();
-Page({
 
-  /**
-   * 页面的初始数据
-   */
+
+Page({
   data: {
-    categoryType: ""
+    categoryType: "",
+    retrieveMoviesUrl: "",
+    moviesData: {},
+    totalCount: 20
   },
 
   /**
@@ -44,38 +45,33 @@ Page({
         retrieveMoviesUrl = app.globalData.douban_base + "v2/movie/top250";
         break;
     }
-    this.getMoviesData(retrieveMoviesUrl);
-  },
 
-  getMoviesData(retrieveMoviesUrl) {
-    wx.request({
-      url: retrieveMoviesUrl,
-      method: "GET",
-      success: function(res) {
-        console.log(JSON.stringify(res.data));
-      }
+    this.setData({
+      retrieveMoviesUrl: retrieveMoviesUrl
     })
+    
+    util.httpRequest(retrieveMoviesUrl, "GET", this.getMoviesData);
   },
 
+  getMoviesData: function(resData) {
 
+    let formattedData = util.processDoubanData(resData.subjects);
+   
+    let moviesData = this.data.moviesData;
+    moviesData.movies = formattedData;
+    this.setData({
+      moviesData: moviesData,
+      totalCount: this.data.totalCount + 20
+    });
+  },
 
+  scrollToUpdate: function(){
+    console.log("加载更多");
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
+    let nextUrl = this.data.retrieveMoviesUrl + "?start=" + this.data.totalCount + "&count=20"; 
+    util.httpRequest(nextUrl, "GET", this.getMoviesData);
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
 
 })

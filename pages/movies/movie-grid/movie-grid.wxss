@@ -1,0 +1,16 @@
+@import '../movie-item/movie-item.wxss';
+
+.movie-grid-container {
+  /* display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between; */
+  /* align-items: center; */
+  padding: 20rpx 72rpx;
+  height: 1300rpx;
+ 
+}
+
+.movie-grid-item {
+ float: left;
+ margin-right: 22rpx;
+}

@@ -7,7 +7,6 @@
   <image class = "movie-image" src="{{image}}" />
   <view class="movie-description">
     <view class="movie-name">{{title}}</view>
-    <!-- <view class="book-author">{{stars}}</view> -->
     <template is = "stars-template" data = "{{...stars}}"/>
   </view>
 
