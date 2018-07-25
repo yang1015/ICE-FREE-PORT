@@ -2,7 +2,10 @@ var app = getApp();
 Page({
   data: {
     moviesInTheaters: {},
-    moviesTop250: {}
+    moviesTop250: {},
+    showContentContainer: true,
+    showSearchPanel: false,
+    searchContent: ''
   },
 
   onLoad: function(event) {
@@ -121,6 +124,35 @@ Page({
     wx.navigateTo({
       url: './more-movies/more-movies?categoryType=' + categoryTitle
     });
+  },
+  onInputChange: function(event){
+    let finalContentEntered = event.detail.value;
+    this.setData({
+      searchContent: finalContentEntered
+    })
+  },
+  onInputFocus: function(event) {
+    // focus时，显示search panel，反之 显示contentContainer
+    this.setData({
+      showContentContainer: false,
+      showSearchPanel: true
+    })
+  },
+  goSearch: function(){
+    console.log("开始搜索: " + this.data.searchContent);
+    this.setData({
+      showContentContainer: true,
+      showSearchPanel: false,
+      searchContent: ''
+    });
+  },
+  clearSearchPanel: function(){
+    this.setData({
+      showContentContainer: true,
+      showSearchPanel: false,
+      searchContent: ''
+    });
   }
+  
 
 });

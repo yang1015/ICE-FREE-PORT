@@ -5,20 +5,39 @@ page {
 }
 
 .search-section {
-  padding-top: 40rpx;
   background: #fff;
-  height: 82rpx;
+  height: 140rpx;  /* input height + top 30 + bottom对称30 */
   display: flex;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
 }
 
 .search-section input {
-  width: 90%;
-  height: 50rpx;
+  position: absolute;
+  left: 30rpx;
+  right: 30rpx;
+  top: 30rpx;
+  z-index: 1;
+  height: 80rpx;
   background: #f5f5f5;
-  border-radius: 20rpx;
+  border-radius: 40rpx;
   font-size: small;
+  padding-left: 80rpx;
+}
+
+.search-icon {
+  position: absolute;
+  left: 50rpx;
+  top: 56rpx;
+  z-index: 100;
+}
+
+.clear-icon {
+  position: absolute;
+  right: 50rpx;
+  top: 56rpx;
+  z-index: 100;
 }
 
 .title {

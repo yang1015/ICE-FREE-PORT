@@ -1,7 +1,8 @@
 <import src="../movie-item/movie-item.wxml" />
 
 <template name="movie-list-template">
-
+  <view wx:if = "{{!movies}}">搜索页面666</view>
+  <view wx:else>
   <view class="section-title">
       <text class = "section-title-head">{{categoryTitle}}</text>
       <view catchtap= "seeMoreMovies" data-categoryTitle = "{{categoryTitle}}">
@@ -16,6 +17,7 @@
       <template is="movie-item-template" data="{{...movie}}" />
     </block>
 
-  </view>
+  </view></view>
+  
 
 </template>
