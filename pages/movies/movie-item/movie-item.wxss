@@ -1,0 +1,30 @@
+@import '../stars/stars.wxss';
+
+.movie-item {
+  position: relative;
+  width: 295rpx;
+  height: 453rpx;
+  box-shadow: 3px 3px 2px #e8e8e8;
+  margin-bottom: 30rpx;
+}
+
+.movie-image {
+  width: inherit;
+  height: inherit;
+}
+
+.movie-description {
+  position: absolute;
+  bottom: 0;
+  top: 70%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 10rpx 12.5rpx 12rpx 12.5rpx;
+  font-size: small;
+  /* color: darkgrey; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+

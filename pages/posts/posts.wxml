@@ -1,0 +1,13 @@
+
+<view class = "container">
+  <swiper indicator-dots = "true" autoplay = "true" interval = "3000" vertical = "true" >
+   <block wx:for = "{{imgUrls}}" wx:key = "{{index}}">
+
+    <swiper-item>
+    <image src = "{{item}}"/>
+    </swiper-item>
+   </block>
+  </swiper>
+
+    <button catchtap = "onMusicTap">播放{{musicControl}}</button>
+</view>

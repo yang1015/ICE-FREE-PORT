@@ -1,0 +1,21 @@
+<import src="./movie-list/movie-list.wxml" />
+
+<view>
+
+  <view class="search-section">
+    <input placeholder="搜索书籍" auto-focus/>
+  </view>
+
+  <view class="title">精选</view>
+
+  <view class="section">
+    <template is="movie-list-template" data="{{...moviesInTheaters}}" data-moviesType="inTheaters" />
+  </view>
+
+  <view class="section">
+    <template is="movie-list-template" data="{{...moviesTop250}}" data-moviesType="inUS" />
+  </view>
+
+
+
+</view>

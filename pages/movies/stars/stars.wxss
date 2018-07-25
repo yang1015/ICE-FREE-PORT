@@ -1,0 +1,18 @@
+.stars-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30rpx;
+  margin-right: 24rpx;
+}
+
+.star-image-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.star-image {
+  width: 24rpx;
+  height: 24rpx;
+}

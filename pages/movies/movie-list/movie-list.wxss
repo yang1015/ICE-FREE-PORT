@@ -1,0 +1,27 @@
+@import '../movie-item/movie-item.wxss';
+
+.movie-list-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 72rpx;
+}
+
+.section-title {
+  display: flex;
+  font-size: small;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0px 72rpx;
+}
+
+.section-title-head {
+  font-size: large;
+  font-weight: 600;
+}
+
+.click-more {
+  width: 17rpx;
+  height: 17rpx;
+}

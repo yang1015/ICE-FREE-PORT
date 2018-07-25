@@ -1,0 +1,17 @@
+<template name="stars-template">
+
+  <view class="stars-row">
+
+    <view class="star-image-wrapper">
+
+
+    <block wx:for = "{{starsArr}}" wx:for-item = "item" wx:key = "index">
+      <image wx:if = "{{item == 1}}" class="star-image" src="/images/icon/star.png" />
+      <image wx:else class="star-image" src="/images/icon/chat.png" />
+    </block>
+
+    </view>
+    <view>{{starsValue == '00'? '暂无评分' : average}}</view>
+  </view>
+  
+</template>

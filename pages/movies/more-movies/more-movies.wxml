@@ -1,0 +1,10 @@
+<import src="./../movie-item/movie-item.wxml" />
+<text>{{categoryType}}</text> 
+
+<!-- 1- 需要categoryType 
+2- 需要所有的inTheaters数据/top250数据 来循环
+3- loading more组件 -->
+
+<view>
+ 
+</view>

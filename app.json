@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/movies/movies",
+    "pages/index/index",
+    "pages/posts/posts",
+    "pages/movies/more-movies/more-movies"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "不冻港",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/tabs/ciwei.png",
+        "selectedIconPath": "/images/tabs/ciwei_hl.png"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影",
+        "iconPath": "/images/tabs/yuedu.png",
+        "selectedIconPath": "/images/tabs/yuedu_hl.png"
+      }
+    ]
+  }
+}
