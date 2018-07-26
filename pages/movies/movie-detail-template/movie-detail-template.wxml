@@ -1,0 +1,46 @@
+
+
+<template name="movie-detail-template">
+    <view class = "poster">
+        <image src = "{{images.large}}" />
+    </view>
+    <view class = "movie-detail-container">
+
+        <view class = "movie-basic-info content-section-margin">
+            <view class = "movie-basic-info-left">
+                <view class = "movie-title">{{title}}</view>
+                <view class = "movie-brief">{{year}} / <text wx:for = "{{countries}}" wx:for-item = "item">
+                    <text class = "array-space">{{item}}</text></text>/  <text wx:for = "{{genres}}" wx:for-item = "item">
+                    <text class = "array-space">{{item}}</text></text>
+                </view>
+                <view class = "movie-brief">片名：{{original_title}}</view>
+            </view>
+            <view class = "movie-ratings">
+                <text class = "movie-brief">豆瓣评分</text>
+                <text class = "movie-title">{{rating.average}}</text>
+                <text class = "movie-brief">{{rating.stars / 10}}</text>
+                <text class = "movie-brief">{{reviews_count}}人</text>
+            </view>
+        </view>
+
+        <view class = "content-section-margin">
+            <text class = "movie-brief title-content-margin">剧情简介</text>
+            <view>
+                {{summary}}
+            </view>
+        </view>
+
+        <view class = "casts-info content-section-margin">
+            <text class = "movie-brief title-content-margin">影人</text>
+            <swiper class = "casts-swiper" display-multiple-items = "{{casts.length}}">
+                <block wx:for="{{casts}}" wx:for-item = "item">
+                    <swiper-item>
+                        <image src="{{item.avatars.large}}" class="cast-avatar" width="355" height="150"/>
+                        <view>{{item.name}}</view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </view>
+
+</template>

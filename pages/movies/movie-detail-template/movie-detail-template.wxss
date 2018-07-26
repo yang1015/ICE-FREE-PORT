@@ -1,0 +1,87 @@
+
+page {
+    font-size: small;
+}
+.array-space {
+    margin-right: 15rpx;
+}
+
+.poster {
+    width: 100%;
+    height: 632rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3f3f38;
+}
+.poster image {
+    width: 330rpx;
+    height: 463rpx;
+}
+
+.movie-detail-container {
+    display: flex;
+    flex-direction: column;
+    padding: 45rpx;
+}
+
+.movie-basic-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-basic-info-left {
+
+}
+
+.movie-title {
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.movie-brief {
+    color: lightgray !important;
+    font-size: small;
+}
+
+.movie-ratings {
+    background: #fff;
+    box-shadow: 3px 3px 2px #e8e8e8;
+    width: 150rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* 每个content section结束后与下一个内容之间的间距*/
+.content-section-margin {
+    margin-bottom: 30rpx;
+}
+
+/* content标题和content具体内容之间的间距 */
+.title-content-margin {
+    margin-bottom: 30rpx;
+}
+
+.casts-swiper {
+    /*height: 500rpx;*/
+    height: 227rpx;
+}
+.cast-avatar {
+    width: 122rpx;
+    height: 168rpx;
+}
+
+.cast-item-wrapper{
+    /*
+        swiper-item的高宽不起效
+        width: 122rpx;
+        height: 227rpx;
+    */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -2,7 +2,7 @@
 
 <template name = "movie-item-template">
 
-<view class="movie-item">
+<view class="movie-item" catchtap = "seeMovieDetail" data-movieId = "{{movieId}}">
 
   <image class = "movie-image" src="{{image}}" />
   <view class="movie-description">

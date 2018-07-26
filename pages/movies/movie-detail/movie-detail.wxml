@@ -1,0 +1,4 @@
+<import src = '../movie-detail-template/movie-detail-template.wxml' />
+<view>
+  <template is = "movie-detail-template" data = "{{...movieDetail}}"/>
+</view>

@@ -185,8 +185,16 @@ Page({
     this.setData({
       showContentContainer: true,
       showSearchPanel: false,
-      searchContent: ' '
+      searchContent: ' ',
+      searchResult: {}
     });
+  },
+
+  seeMovieDetail: function(event){
+    let movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: './movie-detail/movie-detail?movieId=' + movieId,
+    })
   }
   
 
