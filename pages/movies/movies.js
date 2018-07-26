@@ -1,11 +1,15 @@
+var util = require ("./../../utils/util.js");
+
 var app = getApp();
+
 Page({
   data: {
     moviesInTheaters: {},
     moviesTop250: {},
     showContentContainer: true,
     showSearchPanel: false,
-    searchContent: ''
+    searchContent: '',
+    searchResult: {}
   },
 
   onLoad: function(event) {
@@ -129,28 +133,59 @@ Page({
     let finalContentEntered = event.detail.value;
     this.setData({
       searchContent: finalContentEntered
-    })
+    });
+    console.log("input changed: " + finalContentEntered)
   },
   onInputFocus: function(event) {
     // focus时，显示search panel，反之 显示contentContainer
     this.setData({
       showContentContainer: false,
       showSearchPanel: true
-    })
+    });
+  
   },
-  goSearch: function(){
-    console.log("开始搜索: " + this.data.searchContent);
+  onInputBlur: function(event) {
+    console.log("blur: " + event.detail.value);
+
+    if (event.detail.value != '') {
+      this.setData({
+        showContentContainer: false,
+        showSearchPanel: true,
+        searchContent: event.detail.value
+      });
+    } else {
+      this.setData({
+        showContentContainer: true,
+        showSearchPanel: false
+      });
+    }
+    
+  },
+  onInputConfirm: function(event) {
+    
+  },
+  goSearch: function(event){
+    
+    let searchUrl = app.globalData.douban_base + 'v2/movie/search?tag=' + this.data.searchContent;
+    util.httpRequest(searchUrl, "GET", this.getMoviesData);
+  },
+
+  getMoviesData: function (resData) {
+    let formattedData = util.processDoubanData(resData.subjects);
+    let searchResult = this.data.searchResult;
+    searchResult.movies = formattedData;
+
+    console.log("get")
     this.setData({
-      showContentContainer: true,
-      showSearchPanel: false,
-      searchContent: ''
+      searchResult: searchResult
     });
   },
+
   clearSearchPanel: function(){
     this.setData({
       showContentContainer: true,
       showSearchPanel: false,
-      searchContent: ''
+      searchContent: ' '
     });
   }
   

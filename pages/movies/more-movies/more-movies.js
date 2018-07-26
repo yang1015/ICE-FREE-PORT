@@ -64,7 +64,6 @@ Page({
             // refresh的情况 totalcount不增加
         });
 
-
         wx.hideLoading();
         wx.stopPullDownRefresh();
 

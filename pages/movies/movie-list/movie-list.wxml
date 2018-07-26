@@ -1,23 +1,24 @@
 <import src="../movie-item/movie-item.wxml" />
 
 <template name="movie-list-template">
-  <view wx:if = "{{!movies}}">搜索页面666</view>
-  <view wx:else>
-  <view class="section-title">
-      <text class = "section-title-head">{{categoryTitle}}</text>
-      <view catchtap= "seeMoreMovies" data-categoryTitle = "{{categoryTitle}}">
+  
+  
+    <view class="section-title">
+      <text class="section-title-head">{{categoryTitle}}</text>
+      <view catchtap="seeMoreMovies" data-categoryTitle="{{categoryTitle}}">
         查看更多
         <image class="click-more" src="/images/icon/arrow-right.png" />
       </view>
     </view>
 
-  <view class="movie-list-wrapper">
+    <view class="movie-list-wrapper">
 
-    <block wx:for="{{movies}}" wx:for-item="movie" wx:key = "index">
-      <template is="movie-item-template" data="{{...movie}}" />
-    </block>
+      <block wx:for="{{movies}}" wx:for-item="movie" wx:key="index">
+        <template is="movie-item-template" data="{{...movie}}" />
+      </block>
 
-  </view></view>
-  
+    </view>
+ 
+
 
 </template>

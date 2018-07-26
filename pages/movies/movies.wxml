@@ -1,10 +1,19 @@
 <import src="./movie-list/movie-list.wxml" />
+<import src="./movie-grid/movie-grid.wxml" />
 
 <view>
 
   <view class="search-section">
-    <icon type="search" class="search-icon" size='16' catchtap='goSearch'/>
-    <input bindchange="onInputChange" type="text" placeholder="我不是药神" placeholder-class="placeholder" bindfocus='onInputFocus' />
+    <icon type="search" class="search-icon" size='16' catchtap ='goSearch'/>
+    <input 
+      bindchange="onInputChange" 
+      placeholder-class="placeholder" 
+      bindfocus='onInputFocus' 
+      bindblur = "onInputBlur"
+      bindconfirm='onInputConfirm'
+      type="text" placeholder="我不是药神" 
+      value = "{{searchContent}}"
+    />
     <icon wx:if = "{{showSearchPanel}}" type="clear" class="clear-icon" size='16' catchtap = "clearSearchPanel"/>
   </view>
 
@@ -14,14 +23,18 @@
   <view class="section">
     <template is="movie-list-template" data="{{...moviesInTheaters}}" data-moviesType="inTheaters" />
   </view>
-
+  
   <view class="section">
     <template is="movie-list-template" data="{{...moviesTop250}}" data-moviesType="inUS" />
   </view>
-  </block>
 
+   </block>
+ 
+
+
+<!-- search panel -->
   <block wx:if = "{{showSearchPanel}}">
-      <template is="movie-list-template" />
+      <template is="movie-grid-template"  data = "{{...searchResult}}"/>
   </block>
  
 
