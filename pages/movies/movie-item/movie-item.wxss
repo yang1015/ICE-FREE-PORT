@@ -28,3 +28,9 @@
   justify-content: space-around;
 }
 
+.movie-ratings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

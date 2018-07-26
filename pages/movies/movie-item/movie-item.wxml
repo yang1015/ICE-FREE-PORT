@@ -7,7 +7,11 @@
   <image class = "movie-image" src="{{image}}" />
   <view class="movie-description">
     <view class="movie-name">{{title}}</view>
-    <template is = "stars-template" data = "{{...stars}}"/>
+    <view class = "movie-ratings-row">
+      <template is = "stars-template" data = "{{...stars}}"/>
+      <view>{{starsValue == '00'? '暂无评分' : stars.average}}</view>
+    </view>
+
   </view>
 
 </view>

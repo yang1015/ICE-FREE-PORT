@@ -80,5 +80,6 @@ function convertStarsToArray(starsFromData) {
 module.exports = {
   formatTime: formatTime,
     httpRequest: httpRequest,
-  processDoubanData: processDoubanData
+  processDoubanData: processDoubanData,
+    convertStarsToArray: convertStarsToArray
 }

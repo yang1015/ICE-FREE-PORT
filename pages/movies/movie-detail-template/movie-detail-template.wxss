@@ -1,87 +1,120 @@
+@import '../stars/stars.wxss';
 
 page {
-    font-size: small;
+  font-size: small;
 }
+
 .array-space {
-    margin-right: 15rpx;
+  margin-right: 15rpx;
 }
 
 .poster {
-    width: 100%;
-    height: 632rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #3f3f38;
+  width: 100%;
+  height: 315rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3f3f38;
+  position: relative;
+  margin-bottom: 30rpx;
 }
-.poster image {
-    width: 330rpx;
-    height: 463rpx;
+
+.poster-bg {
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(20px);
+  filter: blur(10px);
+}
+
+.poster-thumbnail {
+  width: 170rpx;
+  height: 236rpx;
+  position: absolute;
+  top: 140rpx;
+  right: 35rpx;
 }
 
 .movie-detail-container {
-    display: flex;
-    flex-direction: column;
-    padding: 45rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 45rpx;
 }
 
 .movie-basic-info {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .movie-basic-info-left {
-
 }
 
 .movie-title {
-    font-size: x-large;
-    font-weight: 600;
+  font-size: x-large;
+  font-weight: 600;
 }
 
 .movie-brief {
-    color: lightgray !important;
-    font-size: small;
+  color: #9b9b9b;
+  font-size: 22rpx;
 }
 
+
+/* 豆瓣打分小方框 */
 .movie-ratings {
-    background: #fff;
-    box-shadow: 3px 3px 2px #e8e8e8;
-    width: 150rpx;
-    height: 150rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+  background: #fff;
+  box-shadow: 3px 3px 2px #e8e8e8;
+  width: 170rpx;
+  height: 170rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.movie-ratings-margin {
+  margin-bottom: 5rpx;
+}
+
+.stars-template-container {
+  display: flex;
+  justify-content: center;
+  height: 30rpx;
 }
 
 /* 每个content section结束后与下一个内容之间的间距*/
+
 .content-section-margin {
-    margin-bottom: 30rpx;
+  margin-bottom: 30rpx;
 }
 
 /* content标题和content具体内容之间的间距 */
+
 .title-content-margin {
-    margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
-.casts-swiper {
-    /*height: 500rpx;*/
-    height: 227rpx;
+.casts-scroll-view-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap; /* 如果不加这个 超过一行就会继续显示，而不是Sroll在一行里 */
 }
+
+.cast-container {
+  width: 170rpx;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 20rpx;
+  white-space:normal; /* cast的名字如果长度超过了图片的宽度 就会混乱 需要加这个*/
+  text-align: center;
+
+}
+
 .cast-avatar {
-    width: 122rpx;
-    height: 168rpx;
-}
-
-.cast-item-wrapper{
-    /*
-        swiper-item的高宽不起效
-        width: 122rpx;
-        height: 227rpx;
-    */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  width: 170rpx;
+  height: 220rpx;
 }

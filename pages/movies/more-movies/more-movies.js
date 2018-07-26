@@ -86,6 +86,13 @@ Page({
         let refreshUrl = this.data.retrieveMoviesUrl + "?start=0" + "&count=20";
         util.httpRequest(refreshUrl, "GET", this.getMoviesData);
         wx.showLoading();
+    },
+
+    seeMovieDetail: function(event){
+        let movieId = event.currentTarget.dataset.movieid;
+        wx.navigateTo({
+            url: './../movie-detail/movie-detail?movieId=' + movieId,
+        })
     }
 
 

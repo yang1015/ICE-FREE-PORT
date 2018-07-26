@@ -7,25 +7,28 @@ Page({
     },
 
     onLoad: function (options) {
-        console.log("电影详情页面: " + options.movieId)
-        // this.setData({
-        //   movieId: options.movieId
-        // });
+      
         let movieDetailUrl = app.globalData.douban_base + 'v2/movie/subject/' + options.movieId
         util.httpRequest(movieDetailUrl, 'GET', this.getMovieDetailData);
 
 
     },
     getMovieDetailData(resData) {
-        console.log("当前电影的数据为: " + JSON.stringify(resData));
+        
+
+        resData.stars = {
+            starsArr: util.convertStarsToArray(resData.rating.stars),
+            starsValue: resData.rating.average
+        }
         this.setData({
             movieDetail: resData
         });
     },
-
-    onReady: function () {
-
-    }
-
-
+  previewFullPoster(event){
+    let imageUrl = event.currentTarget.dataset.imageurl;
+    wx.previewImage({
+      current: imageUrl, // 当前显示图片的http链接
+      urls: [imageUrl] // 需要预览的图片http链接列表 可以预览很多图片，这个必须有 哪怕只有一张 也要放在数组里
+    })
+  }
 })
