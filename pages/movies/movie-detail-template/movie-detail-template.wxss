@@ -63,8 +63,8 @@ page {
 .movie-ratings {
   background: #fff;
   box-shadow: 3px 3px 2px #e8e8e8;
-  width: 170rpx;
-  height: 170rpx;
+  width: 150rpx;
+  height: 150rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

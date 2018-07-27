@@ -5,7 +5,7 @@
 2- 需要所有的inTheaters数据/top250数据 来循环
 3- loading more组件 -->
 
-<view class="more-movies-container">
+<view>
   <template is="movie-grid-template" data="{{...moviesData}}" />
   <view></view>
 </view>

@@ -1,4 +1,4 @@
-var util = require ("./../../utils/util.js");
+var util = require("./../../utils/util.js");
 
 var app = getApp();
 
@@ -34,7 +34,7 @@ Page({
       }
     })
   },
-  getMoviesInUS: function (moviesInUSUrl, moviesType, categoryTitle) {
+  getMoviesInUS: function(moviesInUSUrl, moviesType, categoryTitle) {
     let this_ = this;
     wx.request({
       url: moviesInUSUrl,
@@ -47,7 +47,7 @@ Page({
       }
     })
   },
-  processDoubanData: function (moviesFromDouban, moviesType, categoryTitle) {
+  processDoubanData: function(moviesFromDouban, moviesType, categoryTitle) {
     var movies_formated = [];
 
     for (var i = 0; i < 4; i++) {
@@ -56,7 +56,7 @@ Page({
         title: currentMovieFromDouban.title.length >= 7 ? currentMovieFromDouban.title.substring(0, 7) + "..." : currentMovieFromDouban.title,
         image: currentMovieFromDouban.images.large,
         stars: {
-          starsArr: this.convertStarsToArray(currentMovieFromDouban.rating.stars),
+          starsArr: util.convertStarsToArray(currentMovieFromDouban.rating.stars),
           starsValue: currentMovieFromDouban.rating.stars / 10,
           average: currentMovieFromDouban.rating.average
         },
@@ -89,99 +89,83 @@ Page({
         moviesTop250: moviesTop250
       });
     }
-
-
   },
 
-  convertStarsToArray: function(starsFromData) {
-    let stars = parseInt(starsFromData / 10);
-
-    let starArr = [];
-    switch (stars) {
-      case 1:
-        starArr = [1, 0, 0, 0, 0];
-        break;
-      case 2:
-        starArr = [1, 1, 0, 0, 0];
-        break;
-      case 3:
-        starArr = [1, 1, 1, 0, 0];
-        break;
-      case 4:
-        starArr = [1, 1, 1, 1, 0];
-        break;
-      case 5:
-        starArr = [1, 1, 1, 1, 1];
-        break;
-      default:
-        starArr = [0, 0, 0, 0, 0];
-        break;
-    }
-
-    
-    return starArr;
-
-  },
-  seeMoreMovies: function (event){
-    
+  seeMoreMovies: function(event) {
     let categoryTitle = event.target.dataset.categorytitle;
     wx.navigateTo({
       url: './more-movies/more-movies?categoryType=' + categoryTitle
     });
   },
-  onInputChange: function(event){
+
+  /* 同步获取并设置搜索框输入内容 */
+  onInputChange: function(event) {
+    console.log("执行了change")
     let finalContentEntered = event.detail.value;
     this.setData({
       searchContent: finalContentEntered
     });
-    console.log("input changed: " + finalContentEntered)
   },
+
   onInputFocus: function(event) {
+    console.log("执行了focus")
     // focus时，显示search panel，反之 显示contentContainer
     this.setData({
       showContentContainer: false,
       showSearchPanel: true
     });
-  
   },
-  onInputBlur: function(event) {
-    console.log("blur: " + event.detail.value);
 
-    if (event.detail.value != '') {
-      this.setData({
-        showContentContainer: false,
-        showSearchPanel: true,
-        searchContent: event.detail.value
-      });
-    } else {
+  /* 失去焦点时： 如果搜索框有内容就搜索；没有内容就还是显示原数据 */
+  onInputBlur: function(event) {
+    console.log("执行了blur")
+     /* 判断是否有内容，不要用' '/ ''，直接用长度判断 */
+     
+    if (this.data.searchContent.length == 0) {
+      // 没有内容 => 显示原数据 隐藏搜索panel
       this.setData({
         showContentContainer: true,
         showSearchPanel: false
       });
+    } else {
+      this.setData({
+        showContentContainer: false,
+        showSearchPanel: true
+      });
+      this.goSearch();
     }
-    
   },
+
   onInputConfirm: function(event) {
-    
+    console.log("confirm触发: " + this.data.searchContent)
+      if (this.data.searchContent.length == 0) {
+        wx.showToast({
+          title: '请输入搜素内容',
+          icon: 'none',
+          duration: 2000
+        });
+      } else {
+        this.goSearch();
+      } 
   },
-  goSearch: function(event){
-    
+
+  goSearch: function(event) {
+    console.log("执行了go search")
     let searchUrl = app.globalData.douban_base + 'v2/movie/search?tag=' + this.data.searchContent;
     util.httpRequest(searchUrl, "GET", this.getMoviesData);
   },
 
-  getMoviesData: function (resData) {
+  getMoviesData: function(resData) {
     let formattedData = util.processDoubanData(resData.subjects);
     let searchResult = this.data.searchResult;
-    searchResult.movies = formattedData;
+    searchResult.movies = formattedData; /* 添加一个movies属性 是为了在使用template的时候可以直接展开 */
 
-    console.log("get")
     this.setData({
       searchResult: searchResult
     });
   },
 
-  clearSearchPanel: function(){
+  clearSearchPanel: function() {
     this.setData({
       showContentContainer: true,
       showSearchPanel: false,
@@ -190,12 +174,25 @@ Page({
     });
   },
 
-  seeMovieDetail: function(event){
+  seeMovieDetail: function(event) {
     let movieId = event.currentTarget.dataset.movieid;
     wx.navigateTo({
       url: './movie-detail/movie-detail?movieId=' + movieId,
     })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: 'testing小程序',
+      path: '/pages/movies/movies',
+      success: function(res){
+        console.log("succeed");
+      },
+      fail: function (res){
+        console.log("failed")
+      }
+    }
   }
-  
+
 
 });

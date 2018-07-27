@@ -1,16 +1,24 @@
 @import '../movie-item/movie-item.wxss';
 
 .movie-grid-container {
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between; */
-  /* align-items: center; */
-  padding: 20rpx 72rpx;
-  height: 1300rpx;
- 
+  height: 717px;
+  width: 100%;
 }
 
+.movie-grid-wrapper {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  padding-top: 60rpx;
+  margin-right: -22rpx;
+}
+
+/* 每行比100%多了一个item之间的22rpx的间距，所以wrapper就减掉一个22rpx*/
+
 .movie-grid-item {
- float: left;
- margin-right: 22rpx;
+  float: left;
+  margin-right: 22rpx;
 }

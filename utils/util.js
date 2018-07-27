@@ -16,16 +16,17 @@ const formatNumber = n => {
 
 function httpRequest(url, method, callback) {
   wx.request({
-      url: url,
-      method: method,
-      success: function(res) {
-        callback(res.data);
-      }
+    url: url,
+    method: method,
+    "Content-Type": "application",
+    success: function(res) {
+      callback(res.data);
+    }
   })
 }
 
 
-function processDoubanData (moviesFromDouban) {
+function processDoubanData(moviesFromDouban) {
   var movies_formated = [];
 
   for (var i = 0; i < moviesFromDouban.length; i++) {
@@ -79,7 +80,7 @@ function convertStarsToArray(starsFromData) {
 }
 module.exports = {
   formatTime: formatTime,
-    httpRequest: httpRequest,
+  httpRequest: httpRequest,
   processDoubanData: processDoubanData,
-    convertStarsToArray: convertStarsToArray
+  convertStarsToArray: convertStarsToArray
 }

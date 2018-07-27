@@ -2,11 +2,10 @@
 <import src="./movie-grid/movie-grid.wxml" />
 
 <view>
-
   <view class="search-section">
     <icon type="search" class="search-icon" size='16' catchtap ='goSearch'/>
     <input 
-      bindchange="onInputChange" 
+      bindinput="onInputChange" 
       placeholder-class="placeholder" 
       bindfocus='onInputFocus' 
       bindblur = "onInputBlur"

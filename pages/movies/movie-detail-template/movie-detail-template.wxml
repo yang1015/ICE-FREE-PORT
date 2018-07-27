@@ -35,7 +35,7 @@
         <view class="content-section-margin">
             <view class="movie-brief title-content-margin">剧情简介</view>
             <view>
-                {{summary}}
+                {{summary.length != 0? summary : '暂无'}}
             </view>
         </view>
 
@@ -43,7 +43,8 @@
             <view class="movie-brief title-content-margin">影人</view>
             <scroll-view scroll-x='true' class = "casts-scroll-view-wrapper">
                 <block wx:for="{{casts}}" wx:for-item="item" wx:key = "index">
-                    <view class = "cast-container">
+                    <view class = "cast-container" data-imageUrl = "{{item.avatars.large}}"
+                    catchtap='previewFullPoster'>
                         <image class="cast-avatar" src="{{item.avatars.large}}" width="355" height="150"/>
                         <view>{{item.name}}</view>
                     </view>
