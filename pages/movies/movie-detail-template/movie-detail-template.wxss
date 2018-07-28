@@ -45,8 +45,6 @@ page {
   justify-content: space-between;
 }
 
-.movie-basic-info-left {
-}
 
 .movie-title {
   font-size: x-large;
@@ -67,20 +65,20 @@ page {
   height: 150rpx;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
 }
 
 .movie-ratings-margin {
   margin-bottom: 5rpx;
 }
 
-.stars-template-container {
-  display: flex;
-  justify-content: center;
-  height: 30rpx;
+.stars-template-container{
+  margin-top: 5rp;
+  margin-bottom: 5rpx;
 }
-
 /* 每个content section结束后与下一个内容之间的间距*/
 
 .content-section-margin {

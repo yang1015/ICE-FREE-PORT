@@ -10,7 +10,7 @@ App({
     userInfo: null,
     global_musicControl: false,
     // douban_base: 'https://localhost/'
-    douban_base: 'https://douban.uieee.com/'
-    // douban_base: 'http://t.yushu.im/'
+    //douban_base: 'https://douban.uieee.com/'
+     douban_base: 'http://t.yushu.im/'
   }
 })

@@ -16,13 +16,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
     let categoryType = options.categoryType;
-
     this.setData({
       categoryType: categoryType
     });
-
     this.getMoviesUrl(categoryType);
   },
 
@@ -53,7 +50,22 @@ Page({
     util.httpRequest(retrieveMoviesUrl, "GET", this.getMoviesData);
   },
 
-  
+  /* 给moviesData增加一个movies的属性，方便在movie-list里直接...展开调取对象的属性 */
+  getMoviesData(resData) {
+
+    if (JSON.stringify(resData.subjects) != "{}") {
+      let moviesData = this.data.moviesData;
+      let formattedData = util.processDoubanData(resData.subjects);
+      moviesData.movies = formattedData;
+      this.setData({
+        moviesData: moviesData
+      });
+    } else {
+      console.log("接口有错 没有返回data")
+    }
+
+  },
+
   /* Page内函数 监听触底刷新 无需window配置开启 但是可以选配onReachBottomDistance*/
   onReachBottom() {
     console.log("触发触底函数");
@@ -62,8 +74,7 @@ Page({
     wx.showLoading();
   },
 
-  loadMoreMovies: function (resData) {
-
+  loadMoreMovies: function(resData) {
     let formattedData = util.processDoubanData(resData.subjects);
     let moviesData = this.data.moviesData;
     moviesData.movies = formattedData;
@@ -83,11 +94,10 @@ Page({
     需要在 config 的window选项中开启 enablePullDownRefresh
   */
   onPullDownRefresh: function(event) {
-
     this.setData({
       refresh: 1
     });
-    
+
     let refreshUrl = this.data.retrieveMoviesUrl + "?start=0" + "&count=20";
     util.httpRequest(refreshUrl, "GET", this.getMoviesData);
     wx.showLoading();
@@ -99,9 +109,6 @@ Page({
     wx.navigateTo({
       url: './../movie-detail/movie-detail?movieId=' + movieId,
     })
-  },
-
-
-
+  }
 
 })

@@ -47,6 +47,7 @@ Page({
       }
     })
   },
+  
   processDoubanData: function(moviesFromDouban, moviesType, categoryTitle) {
     var movies_formated = [];
 

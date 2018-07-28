@@ -6,16 +6,12 @@ Page({
         movieDetail: {}
     },
 
-    onLoad: function (options) {
-      
+    onLoad: function (options) { 
         let movieDetailUrl = app.globalData.douban_base + 'v2/movie/subject/' + options.movieId
         util.httpRequest(movieDetailUrl, 'GET', this.getMovieDetailData);
-
-
     },
-    getMovieDetailData(resData) {
-        
 
+    getMovieDetailData(resData) {
         resData.stars = {
             starsArr: util.convertStarsToArray(resData.rating.stars),
             starsValue: resData.rating.average

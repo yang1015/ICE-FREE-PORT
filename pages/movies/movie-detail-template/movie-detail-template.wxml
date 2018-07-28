@@ -1,58 +1,56 @@
-<import src="../stars/stars.wxml"/>
+<import src="../stars/stars.wxml" />
 
 <template name="movie-detail-template">
-    <view class="poster" data-imageUrl = "{{images.large}}" catchtap = "previewFullPoster">
-        <image class="poster-bg" src="{{images.large}}" mode="aspectFill"/>
-        <image class="poster-thumbnail" src="{{images.large}}"/>
-    </view>
-    <view class="movie-detail-container">
+  <view class="poster" data-imageUrl="{{images.large}}" catchtap="previewFullPoster">
+    <image class="poster-bg" src="{{images.large}}" mode="aspectFill" />
+    <image class="poster-thumbnail" src="{{images.large}}" />
+  </view>
+  <view class="movie-detail-container">
 
-        <view class="movie-basic-info content-section-margin">
-            <view class="movie-basic-info-left">
-                <view class="movie-title">{{title}}</view>
-                <view class="movie-brief">{{year}} /
-                    <text wx:for="{{countries}}" wx:for-item="item" wx:key = "index">
+    <view class="movie-basic-info content-section-margin">
+      <view class="movie-basic-info-left">
+        <view class="movie-title">{{title}}</view>
+        <view class="movie-brief">{{year}} /
+          <text wx:for="{{countries}}" wx:for-item="item" wx:key="index">
                         <text class="array-space movie-brief">{{item}}</text>
-                    </text>
-                    /
-                    <text wx:for="{{genres}}" wx:for-item="item" wx:key = "index">
+          </text>
+          /
+          <text wx:for="{{genres}}" wx:for-item="item" wx:key="index">
                         <text class="array-space movie-brief">{{item}}</text>
-                    </text>
-                </view>
-                <view class="movie-brief">片名：{{original_title}}</view>
-            </view>
-            <view class="movie-ratings">
-                <text class="movie-brief">豆瓣评分</text>
-                <text class="movie-title">{{rating.average}}</text>
-                <view class="stars-template-container">
-                    <template is="stars-template" data="{{ ...stars }}"/>
-                </view>
-
-                <text class="movie-brief">{{reviews_count}}人看过</text>
-            </view>
+          </text>
         </view>
-
-        <view class="content-section-margin">
-            <view class="movie-brief title-content-margin">剧情简介</view>
-            <view>
-                {{summary.length != 0? summary : '暂无'}}
-            </view>
-        </view>
-
-        <view class="casts-info content-section-margin">
-            <view class="movie-brief title-content-margin">影人</view>
-            <scroll-view scroll-x='true' class = "casts-scroll-view-wrapper">
-                <block wx:for="{{casts}}" wx:for-item="item" wx:key = "index">
-                    <view class = "cast-container" data-imageUrl = "{{item.avatars.large}}"
-                    catchtap='previewFullPoster'>
-                        <image class="cast-avatar" src="{{item.avatars.large}}" width="355" height="150"/>
-                        <view>{{item.name}}</view>
-                    </view>
-                </block>
-            </scroll-view>
-        </view>
-
-
+        <view class="movie-brief">片名：{{original_title}}</view>
+      </view>
+      <view class="movie-ratings">
+        <text class="movie-brief">豆瓣评分</text>
+        <text class="movie-title">{{rating.average}}</text>
+        <view class = "stars-template-container">
+        <template is="stars-template" data="{{ ...stars }}" /></view>
+        
+        <text class="movie-brief">{{reviews_count}}人看过</text>
+      </view>
     </view>
+
+    <view class="content-section-margin">
+      <view class="movie-brief title-content-margin">剧情简介</view>
+      <view>
+        {{summary.length != 0? summary : '暂无'}}
+      </view>
+    </view>
+
+    <view class="casts-info content-section-margin">
+      <view class="movie-brief title-content-margin">影人</view>
+      <scroll-view scroll-x='true' class="casts-scroll-view-wrapper">
+        <block wx:for="{{casts}}" wx:for-item="item" wx:key="index">
+          <view class="cast-container" data-imageUrl="{{item.avatars.large}}" catchtap='previewFullPoster'>
+            <image class="cast-avatar" src="{{item.avatars.large}}" width="355" height="150" />
+            <view>{{item.name}}</view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+
+
+  </view>
 
 </template>
